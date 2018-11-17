@@ -20,14 +20,14 @@
   version = "v0.7.6"
 
 [[projects]]
-  branch = "master"
   name = "github.com/ik5/gostrutils"
   packages = ["."]
-  revision = "28747eca49b5638febadc12c5e6624f6bb49e36a"
+  revision = "0f72fdb42f597da68db5d1cfc2384a6eafb8f1f6"
+  version = "v0.1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6484b9b5b5b26a59e76baae511a6f6f7b27346b33a67d108e0e3406845b559d0"
+  inputs-digest = "26b243443d84ab0ffa56d4c8c1dee4d46ba7459def00d1ee3e43ba9f82154eba"
   solver-name = "gps-cdcl"
   solver-version = 1

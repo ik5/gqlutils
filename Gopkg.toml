@@ -26,3 +26,4 @@
 
 [[constraint]]
   name = "github.com/ik5/gostrutils"
+  version = "v0.1"
