@@ -16,6 +16,7 @@ import (
 //   - floating point (float32, float64, complex64, complex128)
 //   - string (string, rune)
 //   - date/time
+//   - boolean
 func TypeToGQLType(typ string) *graphql.Scalar {
 	switch typ {
 	case "string", "rune":
