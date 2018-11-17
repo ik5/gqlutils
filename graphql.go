@@ -48,13 +48,13 @@ func TypeToGQLType(typ string) *graphql.Scalar {
 //
 // Example for struct:
 //
-//  type test struct {
-//	  ID       int       `json:"id,omitempty" desc:"foo bar" type:"int64"`
-//	  Name     string    `json:"-"`
-//	  DateTime time.Time `json:"date_time" type:"time" desc:"DateTime"`
-//	  KeyName  int64     `json:"-," deprecation:""`
-//	  Nothing  string
-//  }
+// type test struct {
+//   ID       int       `json:"id,omitempty" desc:"foo bar" type:"int64"`
+//   Name     string    `json:"-"`
+//   DateTime time.Time `json:"date_time" type:"time" desc:"DateTime"`
+//   KeyName  int64     `json:"-," deprecation:""`
+//   Nothing  string
+// }
 func StructToFields(strct interface{}) graphql.Fields {
 	fields := make(graphql.Fields)
 
