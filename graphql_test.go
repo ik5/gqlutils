@@ -2,9 +2,18 @@ package gqlutils
 
 import (
 	"testing"
+	"time"
 
 	"github.com/graphql-go/graphql"
 )
+
+type test struct {
+	ID       int       `json:"id,omitempty" desc:"foo bar" type:"int64"`
+	Name     string    `json:"-"`
+	DateTime time.Time `json:"date_time" type:"time" desc:"DateTime"`
+	KeyName  int64     `json:"-," deprecation:"Will not be used next version"`
+	Nothing  string
+}
 
 func TestTypeToGQLTypeInt(t *testing.T) {
 	intList := []string{"byte", "uintptr", "int", "int8", "int16", "int32", "int64",
@@ -63,6 +72,27 @@ func TestTypeToGQLTypeUnknown(t *testing.T) {
 	}
 }
 
-func TestStructToFields(t *testing.T) {
+func TestStructToFieldsNames(t *testing.T) {
+	fields := StructToFields(test{})
 
+	keyNames := []string{"id", "date_time", "key_name"}
+	if len(keyNames) != len(fields) {
+		t.Errorf("Expected '#%d' fields, found '#%d'", len(keyNames), len(fields))
+	}
+}
+
+func TestStructToFieldsFieldsValidTypes(t *testing.T) {
+	fields := StructToFields(test{})
+
+	if fields["id"].Type != graphql.Int {
+		t.Errorf("Expected 'id.Type == graphql.Int' found: '%T'", fields["id"].Type)
+	}
+
+	if fields["date_time"].Type != graphql.DateTime {
+		t.Errorf("Expected 'date_time.Type == graphql.DateTime', found '%T'", fields["date_time"].Type)
+	}
+
+	if fields["key_name"].Type != graphql.Int {
+		t.Errorf("Expected 'key_name.Type == graphql.Int', found '%T'", fields["date_time"].Type)
+	}
 }
